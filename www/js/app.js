@@ -91,10 +91,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
-  //把tab放到底部
-  //$ionicConfigProvider.tabs.position('bottom');
+  
 
-
+    //修改Tab样式，Android平台样式和iOS一样
     $ionicConfigProvider.platform.ios.tabs.style('standard');  
     $ionicConfigProvider.platform.ios.tabs.position('bottom');  
     $ionicConfigProvider.platform.android.tabs.style('standard');  
@@ -105,7 +104,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       
     $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');  
     $ionicConfigProvider.platform.android.backButton.previousTitleText('Back').icon('ion-android-arrow-back');  
-    //$ionicConfigProvider.platform.android.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');  
       
     $ionicConfigProvider.platform.ios.views.transition('ios');  
     $ionicConfigProvider.platform.android.views.transition('android');  
