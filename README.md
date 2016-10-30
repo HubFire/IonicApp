@@ -1,0 +1,2 @@
+# IonicApp
+基于ionic开发的跨平台ApphaQuant选股APP
