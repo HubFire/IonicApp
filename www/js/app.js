@@ -15,15 +15,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
+      //检测网络状态
+      checkConnection();
+
       //初始化JPush消息推送
-      window.plugins.jPushPlugin.init();
-      if (device.platform != "Android") {
-                    window.plugins.jPushPlugin.setDebugModeFromIos();
-                    window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
-      } else {
-                    window.plugins.jPushPlugin.setDebugMode(true);
-                    window.plugins.jPushPlugin.setStatisticsOpen(true);
-      }
+
 
     }
     if (window.StatusBar) {
@@ -33,7 +29,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -80,32 +76,73 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })
 
   .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      url: '/account',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/tab-account.html',
+          controller: 'AccountCtrl'
+        }
       }
-    }
-  });
+    })
+    .state('jpush', {
+      url: '/jpush',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/jpush.html',
+        }
+      }
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
-  
 
-    //修改Tab样式，Android平台样式和iOS一样
-    $ionicConfigProvider.platform.ios.tabs.style('standard');  
-    $ionicConfigProvider.platform.ios.tabs.position('bottom');  
-    $ionicConfigProvider.platform.android.tabs.style('standard');  
-    $ionicConfigProvider.platform.android.tabs.position('standard');  
-      
-    $ionicConfigProvider.platform.ios.navBar.alignTitle('center');  
-    $ionicConfigProvider.platform.android.navBar.alignTitle('center');  
-      
-    $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');  
-    $ionicConfigProvider.platform.android.backButton.previousTitleText('Back').icon('ion-android-arrow-back');  
-      
-    $ionicConfigProvider.platform.ios.views.transition('ios');  
-    $ionicConfigProvider.platform.android.views.transition('android');  
+
+  //修改Tab样式，Android平台样式和iOS一样
+  $ionicConfigProvider.platform.ios.tabs.style('standard');
+  $ionicConfigProvider.platform.ios.tabs.position('bottom');
+  $ionicConfigProvider.platform.android.tabs.style('standard');
+  $ionicConfigProvider.platform.android.tabs.position('standard');
+
+  $ionicConfigProvider.platform.ios.navBar.alignTitle('center');
+  $ionicConfigProvider.platform.android.navBar.alignTitle('center');
+
+  $ionicConfigProvider.platform.ios.backButton.previousTitleText('').icon('ion-ios-arrow-thin-left');
+  $ionicConfigProvider.platform.android.backButton.previousTitleText('Back').icon('ion-android-arrow-back');
+
+  $ionicConfigProvider.platform.ios.views.transition('ios');
+  $ionicConfigProvider.platform.android.views.transition('android');
 
 });
+
+//网络状态检测
+function checkConnection() {
+  var networkState = navigator.connection.type;
+
+  var states = {};
+  //网络状态  
+  states[Connection.UNKNOWN] = 'Unknown connection';
+  states[Connection.ETHERNET] = 'Ethernet connection';
+  states[Connection.WIFI] = 'WiFi connection';
+  states[Connection.CELL_2G] = 'Cell 2G connection';
+  states[Connection.CELL_3G] = 'Cell 3G connection';
+  states[Connection.CELL_4G] = 'Cell 4G connection';
+  states[Connection.CELL] = 'Cell generic connection';
+  states[Connection.NONE] = '网络异常，不能连接到服务器';
+
+  if (states[networkState] == "网络异常，不能连接到服务器") {
+    alert(states[networkState]);
+  } else {
+    window.plugins.jPushPlugin.init();
+    if (device.platform != "Android") {
+      window.plugins.jPushPlugin.setDebugModeFromIos();
+      window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
+    } else {
+      window.plugins.jPushPlugin.setDebugMode(true);
+      window.plugins.jPushPlugin.setStatisticsOpen(true);
+    }
+    //Jpush  收到推送后跳转
+    window.plugins.jPushPlugin.openNotificationInAndroidCallback = function(data) {
+
+    };
+  }
+}
