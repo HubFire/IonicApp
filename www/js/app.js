@@ -92,6 +92,30 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           // templateUrl: 'templates/jpush.html',
         }
       }
+    })
+    //大盘行情页面
+    .state('hangqing', {
+      url: '/hangqing',
+      templateUrl: 'templates/hangqing.html',
+      controller: 'DashCtrl'
+    })
+    //数据服务页面
+    .state('shuju', {
+      url: '/shuju',
+      templateUrl: 'templates/shuju.html',
+      controller: 'DashCtrl'
+    })
+    //社区交流页
+    .state('shequ', {
+      url: '/shequ',
+      templateUrl: 'templates/shequ.html',
+      controller: 'DashCtrl'
+    })
+    //量化课堂
+    .state('ketang', {
+      url: '/ketang',
+      templateUrl: 'templates/ketang.html',
+      controller: 'DashCtrl'
     });
 
   // if none of the above states are matched, use this as the fallback

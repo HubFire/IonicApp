@@ -1,6 +1,25 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope,$ionicSlideBoxDelegate) {
+.controller('DashCtrl', function($scope, $ionicSlideBoxDelegate, $state) {
+
+  $scope.gotoHome =function(){
+    $state.go("tab.dash",{},{reload:true});
+  };
+  $scope.gotoDapan = function() {
+    $state.go("hangqing",{},{reload:true});
+  };
+  $scope.gotoShuju = function() {
+    $state.go("shuju",{},{reload:true});
+  };
+  $scope.gotoShequ = function() {
+    $state.go("shequ",{},{reload:true});
+    //$state.go('hangqing',{},{reload:true});
+  };
+  $scope.gotoKetang = function() {
+    $state.go("ketang",{},{reload:true});
+    //$state.go('hangqing',{},{reload:true});
+  };
+
 
   //为了验证属性active-slide定义的模型，angularjs是mvc模式
   $scope.model = {
@@ -21,6 +40,7 @@ angular.module('starter.controllers', [])
   };
   //这是属性delegate-handle的验证使用的，其实没必要重定义，直接使用$ionicSlideBoxDelegate就可以
   $scope.delegateHandle = $ionicSlideBoxDelegate;
+
 
 
 })
