@@ -116,6 +116,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/ketang',
       templateUrl: 'templates/ketang.html',
       controller: 'DashCtrl'
+    })
+    .state('niugu', {
+      url: '/home/niugu',
+      templateUrl: 'templates/home/niugu.html',
+      controller: 'DashCtrl'
+    })
+    .state('regu', {
+      url: '/home/regu',
+      templateUrl: 'templates/home/regu.html',
+      controller: 'DashCtrl'
+    })
+    .state('zixun', {
+      url: '/home/zixun',
+      templateUrl: 'templates/home/zixun.html',
+      controller: 'DashCtrl'
     });
 
   // if none of the above states are matched, use this as the fallback

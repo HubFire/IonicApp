@@ -13,13 +13,19 @@ angular.module('starter.controllers', [])
   };
   $scope.gotoShequ = function() {
     $state.go("shequ",{},{reload:true});
-    //$state.go('hangqing',{},{reload:true});
   };
   $scope.gotoKetang = function() {
     $state.go("ketang",{},{reload:true});
-    //$state.go('hangqing',{},{reload:true});
   };
-
+  $scope.gotoNiugu = function() {
+    $state.go("niugu",{},{reload:true});
+  };
+  $scope.gotoRegu = function() {
+    $state.go("regu",{},{reload:true});
+  };
+  $scope.gotoZixun = function() {
+    $state.go("zixun",{},{reload:true});
+  };
 
   //为了验证属性active-slide定义的模型，angularjs是mvc模式
   $scope.model = {
@@ -28,9 +34,9 @@ angular.module('starter.controllers', [])
 
   //此事件对应的是pager-click属性，当显示图片是有对应数量的小圆点，这是小圆点的点击事件
   $scope.pageClick = function(index) {
-    //alert(index);
+   
 
-    $scope.model.activeIndex = 2;
+    $scope.model.activeIndex = index;
   };
 
   //当图片切换后，触发此事件，注意参数

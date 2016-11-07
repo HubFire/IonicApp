@@ -7,17 +7,17 @@
     <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" slide-interval=2000 show-pager="true" pager-click="pageClick(index)" active-slide="model.activeIndex" delegate-handle="delegateHandler">
     <ion-slide>
     <div class="box blue">
-      <img src="http://202.114.196.97:43080/getPicture/?name=niugu">
+      <img src="http://202.114.196.97:43080/getPicture/?name=niugu" ng-click="gotoNiugu()">
     </div>
     </ion-slide>
     <ion-slide>
     <div class="box yellow">
-      <img src="http://202.114.196.97:43080/getPicture/?name=regu">
+      <img src="http://202.114.196.97:43080/getPicture/?name=regu" ng-click="gotoRegu()">
     </div>
     </ion-slide>
     <ion-slide>
     <div class="box pink">
-      <img src="http://202.114.196.97:43080/getPicture/?name=zixun">
+      <img src="http://202.114.196.97:43080/getPicture/?name=zixun" ng-click="gotoZixun()">
     </div>
     </ion-slide>
     </ion-slide-box>
