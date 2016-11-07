@@ -48,6 +48,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   .state('tab.dash', {
     url: '/dash',
+    cache:true,
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
@@ -88,7 +89,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/jpush',
       views: {
         'tab-account': {
-          templateUrl: 'templates/jpush.html',
+          // templateUrl: 'templates/jpush.html',
         }
       }
     });
@@ -143,6 +144,11 @@ function checkConnection() {
     //Jpush  收到推送后跳转
     window.plugins.jPushPlugin.openNotificationInAndroidCallback = function(data) {
 
-    };
+      alert(data.title);
+      alert(data.alert);
+      for (i in data.extras) {
+        alert(i);
+      }
+    }
   }
-}
+};

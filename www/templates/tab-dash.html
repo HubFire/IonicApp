@@ -1,36 +1,61 @@
-<ion-view view-title="Dashboard">
+<ion-view view-title="首页">
 
   <ion-content class="padding">
+
+  <!-- 图片轮播-->
+  <div>
     <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" slide-interval=2000 show-pager="true" pager-click="pageClick(index)" active-slide="model.activeIndex" delegate-handle="delegateHandler">
-  <ion-slide>
+    <ion-slide>
     <div class="box blue">
       <img src="http://202.114.196.97:43080/getPicture/?name=niugu">
     </div>
-  </ion-slide>
-  <ion-slide>
+    </ion-slide>
+    <ion-slide>
     <div class="box yellow">
       <img src="http://202.114.196.97:43080/getPicture/?name=regu">
     </div>
-  </ion-slide>
-  <ion-slide>
+    </ion-slide>
+    <ion-slide>
     <div class="box pink">
       <img src="http://202.114.196.97:43080/getPicture/?name=zixun">
     </div>
-  </ion-slide>
-</ion-slide-box>
+    </ion-slide>
+    </ion-slide-box>
 
-    <h2>Welcome to Ionic</h2>
-    <p>
-    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
-    </p>
-    <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-    </p>
-    <p>
-    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-    </p>
-    <p>
-      For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
-    </p>
+    
   </ion-content>
+  </div>
+  <!-- 1x4网格布局图标菜单-->
+  <div class="row"  style="background-color:#F4F4F4;margin-top:10px;margin-bottom:10px;text-align:center;">
+    
+    <div class="col col-25">
+      <div><i class="icon icon-dapan"  style="font-size:  70px;color:#E066FF"></i>
+      </div>
+      <div><span style="color:#E066FF">大盘行情</span>
+      </div>
+    </div>
+    
+    <div class="col col-25"> 
+      <div><i class="icon icon-shuju"  style="font-size: 70px;color:#E066FF"></i>
+      </div>
+      <div><span style="color:#E066FF">数据服务</span>
+      </div>
+    </div>
+    <div class="col col-25"> 
+      <div><i class="icon icon-shequ"  style="font-size: 70px;color:#E066FF"></i>
+      </div>
+      <div><span style="color:#E066FF">社区交流</span>
+      </div>
+    </div>
+    <div class="col col-25"> 
+      <div><i class="icon icon-ketang" style="font-size: 70px;color:#E066FF"></i>
+      </div>
+      <div><span style="color:#E066FF">量化课堂</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 1x4网格布局图标菜单-->
+  
+
 </ion-view>
