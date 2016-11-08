@@ -97,6 +97,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .state('hangqing', {
       url: '/hangqing',
       templateUrl: 'templates/hangqing.html',
+      cache:true,
       controller: 'IndexCtrl'
     })
     //数据服务页面
