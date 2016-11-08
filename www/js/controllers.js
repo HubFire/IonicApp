@@ -91,16 +91,36 @@ angular.module('starter.controllers', [])
       enableFriends: true
     };
   })
-.controller('IndexCtrl', function($scope, IndexLists) {
+  .controller('IndexCtrl', function($scope, IndexLists,$ionicLoading,$state) {
 
-    $scope.indexlists=function() {
-      $http.jsonp(url, {
-        params: {
-          callback: 'JSON_CALLBACK'
-        }
-      }).success(function(response) {
-      return response.data;
+    $scope.showLoadingToast = function() {
+      $ionicLoading.show({
+        template: '正在拼命加载数据...',
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: false,
+        maxWidth: 100,
+        showDelay: 0
       });
     };
+
+    $scope.hideLoadingToast = function() {
+      $ionicLoading.hide();
+    };
+
+    $scope.showLoadingToast();
+    IndexLists.all().then(function(result) {
+      $scope.hideLoadingToast();
+      $scope.indexlists = result;
+    }, function() {
+      console.log('get index data error');
+    });
+  
+  $scope.gotoHome = function() {
+    $state.go("tab.dash", {}, {
+      reload: true
+    });
+  };
     
+
   });
